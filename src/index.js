@@ -7,7 +7,7 @@ const genDiff = (filepath1, filepath2) => {
   const file2 = JSON.parse(readFileSync(resolve(filepath2), 'utf-8'));
   const keys = Object.keys({ ...file1, ...file2 });
 
-  const sortedData = _.sortBy(keys, (key) => key)
+  const result = _.sortBy(keys, (key) => key)
     .map((key) => {
       if (!_.has(file2, key)) {
         return `- ${key}: ${file1[key]}`; // deleted
@@ -19,9 +19,9 @@ const genDiff = (filepath1, filepath2) => {
         return `  ${key}: ${file1[key]}`; // unchanged
       }
       return `- ${key}: ${file1[key]}\n  + ${key}: ${file2[key]}`; // changed
-    });
+    })
+    .join('\n  ');
 
-  const result = sortedData.join('\n  ');
   return `{\n  ${result}\n}`;
 };
 
