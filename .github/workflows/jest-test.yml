@@ -1,4 +1,4 @@
-name: eslint-test
+name: jest-test
 on: 
   - push
   
@@ -15,6 +15,6 @@ jobs:
       - name: npm install
         run: 
           npm install
-      - name: Run eslint
+      - name: Run jest
         run: 
-          make lint
+          make test

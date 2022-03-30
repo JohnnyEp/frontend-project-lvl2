@@ -3,6 +3,9 @@ import { resolve } from 'path';
 import { readFileSync } from 'fs';
 
 const genDiff = (filepath1, filepath2) => {
+  if (!filepath1.endsWith('.json') || !filepath2.endsWith('.json')) {
+    return 'One or both files are not .JSON';
+  }
   const file1 = JSON.parse(readFileSync(resolve(filepath1), 'utf-8'));
   const file2 = JSON.parse(readFileSync(resolve(filepath2), 'utf-8'));
   const keys = Object.keys({ ...file1, ...file2 });
