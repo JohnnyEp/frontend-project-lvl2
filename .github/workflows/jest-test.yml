@@ -18,3 +18,10 @@ jobs:
       - name: Run jest
         run: 
           make test
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v3
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageCommand: npm run coverage
+          debug: true    
