@@ -7,9 +7,6 @@
   "bin": {
     "gendiff": "bin/gendiff.js"
   },
-  "scripts": {
-    "test":"npx jest --bail"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JohnnyEp/frontend-project-lvl2.git"
